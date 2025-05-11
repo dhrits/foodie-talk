@@ -1,0 +1,26 @@
+chainlit_version: 2.0.4
+theme:
+  primary_color: "#FF6B6B"
+  background_color: "#FFF5F5"
+  font_family: "Inter, system-ui, sans-serif"
+  chat:
+    avatar:
+      assistant: "🍽️"
+      user: "👤"
+    message:
+      background_color: "#FFFFFF"
+      border_radius: "12px"
+      padding: "16px"
+      shadow: "0 2px 4px rgba(0,0,0,0.1)"
+    input:
+      background_color: "#FFFFFF"
+      border_radius: "24px"
+      padding: "12px 20px"
+      shadow: "0 2px 4px rgba(0,0,0,0.1)"
+    header:
+      background_color: "#FF6B6B"
+      text_color: "#FFFFFF"
+      font_size: "1.5rem"
+      font_weight: "600"
+      padding: "16px"
+      border_radius: "0 0 12px 12px" 
