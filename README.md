@@ -13,6 +13,14 @@ license: cc-by-nc-nd-4.0
 ## Introduction
 This is a educational project made as a part of *AI Engineering Bootcamp* from [*AI Makerspace*](https://aimakerspace.io/). The code and the data is strictly for educational use. In particular, for any subset of Yelp data, please find the terms of use [here](https://business.yelp.com/external-assets/files/Yelp-JSON.zip). For 10000 restaurant reviews, please find the license [here](https://www.kaggle.com/datasets/joebeachcapital/restaurant-reviews).
 
+## Installation
+1. Install uv using the instructions [here](https://docs.astral.sh/uv/getting-started/installation/). Eg, on Mac run `curl -LsSf https://astral.sh/uv/install.sh | sh`
+2. Create a virtual environment by running the command `uv venv`
+3. Activate the virtual environment by running `source .venv/bin/activate`
+4. Install dependencies by running `uv sync`
+5. Run the app by running the command `uv run chainlit run app.py`
+
+
 ## Task 1: The Problem
 
 Foodie-Talk *solves the problem of finding the perfect food for your tastes when faced with an overwhelming number of options.*
