@@ -40,7 +40,7 @@ Foodie-Talk leverages LangChain and LangGraph to build an agentic application wh
 7. User-Interface - The application is delivered to the user by making use of **Chainlit**.
 8. Serving and Inference - Serving and inference is handled by a combination of Huggingface Spaces (for the base chainlit application) and Huggingface Inference Endpoints (for inference of the finetuned model).
 
-![LangGraph Agentic Graph Diagram](agentic_graph.png)
+![LangGraph Agentic Graph Diagram](foodie-talk-graph.png)
 
 ## Task 3: Dealing with Data
 This application makes use of two *non-commercial datasets*. The first one is the **[Yelp Business Reviews Dataset](https://business.yelp.com/external-assets/files/Yelp-JSON.zip)** and the second is **[Kaggle's 10000 Restaurant Reviews Dataset](https://www.kaggle.com/datasets/joebeachcapital/restaurant-reviews)**. The ways in which this data is used is outlined below.
