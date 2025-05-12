@@ -16,7 +16,7 @@ async def on_chat_start():
     
     # Create a welcome message with elements
     elements = [
-        cl.Image(name="foodie", url="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&auto=format&fit=crop&q=60", display="inline"),
+        cl.Image(name="foodie", path="food_image.jpg", display="inline"),
         cl.Text(name="welcome", content="👋 Welcome to Foodie Talk! I'm your personal food recommendation assistant. Ask me anything about restaurants, cuisines, or food recommendations!", display="inline")
     ]
     
