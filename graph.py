@@ -47,22 +47,23 @@ class AgentState(TypedDict):
     context: List[Document]
     search_results:Tuple[Union[List[Dict[str, str]], str], Dict]
 
+device_ = "cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu")
+if os.environ.get("HF_FOOD_EMBED_MODEL_URL"):
+    embeddings_ = HuggingFaceEndpointEmbeddings(
+    model=HF_FOOD_EMBED_MODEL_URL,
+    task="feature-extraction",
+    huggingfacehub_api_token=os.environ["HF_TOKEN"],
+    )
+else:
+    embeddings_ = HuggingFaceEmbeddings(
+    model_name="deman539/food-review-ft-snowflake-l-f18eeff6-7504-48c7-af10-1d2d85ca8caa",
+    model_kwargs={"device": device_},
+    )
+
 
 def build_graph_chain():
     """Builds a foodie-talk langgraph"""
-    device = "cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu")
     openai_chat_model = ChatOpenAI(model="gpt-4.1-mini")
-    if os.environ.get("HF_FOOD_EMBED_MODEL_URL"):
-        embeddings = HuggingFaceEndpointEmbeddings(
-        model=HF_FOOD_EMBED_MODEL_URL,
-        task="feature-extraction",
-        huggingfacehub_api_token=os.environ["HF_TOKEN"],
-        )
-    else:
-        embeddings = HuggingFaceEmbeddings(
-        model_name="deman539/food-review-ft-snowflake-l-f18eeff6-7504-48c7-af10-1d2d85ca8caa",
-        model_kwargs={"device": device},
-        )
     client = QdrantClient(
     url=os.environ.get('QDRANT_DB_BITTER_MAMMAL'), # Name of the qdrant cluster is bitter_mammal
     api_key=os.environ.get('QDRANT_API_KEY_BITTER_MAMMAL'),
@@ -70,7 +71,7 @@ def build_graph_chain():
     vector_store = QdrantVectorStore(
         client=client,
         collection_name="yelp_reviews",
-        embedding=embeddings,
+        embedding=embeddings_,
     )
     qdrant_retriever = vector_store.as_retriever()
 
