@@ -55,6 +55,7 @@ if os.environ.get("HF_FOOD_EMBED_MODEL_URL"):
     huggingfacehub_api_token=os.environ["HF_TOKEN"],
     )
 else:
+    print("HF url not found. Using local model")
     embeddings_ = HuggingFaceEmbeddings(
     model_name="deman539/food-review-ft-snowflake-l-f18eeff6-7504-48c7-af10-1d2d85ca8caa",
     model_kwargs={"device": device_},
