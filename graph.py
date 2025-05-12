@@ -1,5 +1,6 @@
 import os
 import tiktoken
+import torch
 from operator import itemgetter
 from typing import Any, Callable, List, Optional, TypedDict, Union
 
@@ -15,7 +16,7 @@ from operator import itemgetter
 from langchain.schema.output_parser import StrOutputParser
 from langchain_community.tools import TavilySearchResults
 from langchain.schema.output_parser import StrOutputParser
-from langchain_huggingface import HuggingFaceEndpointEmbeddings
+from langchain_huggingface import HuggingFaceEndpointEmbeddings, HuggingFaceEmbeddings
 
 from langchain.agents import AgentExecutor, create_openai_functions_agent
 from langchain.output_parsers.openai_functions import JsonOutputFunctionsParser
@@ -36,7 +37,7 @@ from langchain.schema import Document
 import operator
 from langchain_core.messages import BaseMessage
 
-EMBED_MODEL_URL = "https://klnki3w1q88gr09t.us-east-1.aws.endpoints.huggingface.cloud"
+HF_FOOD_EMBED_MODEL_URL = "https://klnki3w1q88gr09t.us-east-1.aws.endpoints.huggingface.cloud"
 
 
 class AgentState(TypedDict):
@@ -49,12 +50,19 @@ class AgentState(TypedDict):
 
 def build_graph_chain():
     """Builds a foodie-talk langgraph"""
+    device = "cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu")
     openai_chat_model = ChatOpenAI(model="gpt-4.1-mini")
-    embeddings = HuggingFaceEndpointEmbeddings(
-    model=EMBED_MODEL_URL,
-    task="feature-extraction",
-    huggingfacehub_api_token=os.environ["HF_TOKEN"],
-    )
+    if os.environ.get("HF_FOOD_EMBED_MODEL_URL"):
+        embeddings = HuggingFaceEndpointEmbeddings(
+        model=HF_FOOD_EMBED_MODEL_URL,
+        task="feature-extraction",
+        huggingfacehub_api_token=os.environ["HF_TOKEN"],
+        )
+    else:
+        embeddings = HuggingFaceEmbeddings(
+        model_name="deman539/food-review-ft-snowflake-l-f18eeff6-7504-48c7-af10-1d2d85ca8caa",
+        model_kwargs={"device": device},
+        )
     client = QdrantClient(
     url=os.environ.get('QDRANT_DB_BITTER_MAMMAL'), # Name of the qdrant cluster is bitter_mammal
     api_key=os.environ.get('QDRANT_API_KEY_BITTER_MAMMAL'),
