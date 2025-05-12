@@ -61,7 +61,7 @@ This application makes use of two *non-commercial datasets*. The first one is th
 
 ## Task 4: Building a quick end to end prototype
 
-A prototype application is included at [Foodie-Talk](https://huggingface.co/spaces/deman539/foodie-talk) (Please note that I may disable this application because it costs a lot to keep the huggingface inference endpoints and Qdrant Cloud subscription ongoing).
+A prototype application is included at [Foodie-Talk](https://huggingface.co/spaces/deman539/foodie-talk) (Please note that **I may disable this application because it costs a lot to keep the huggingface inference endpoints and Qdrant Cloud subscription ongoing. Please message me to re-enable it**).
 
 ## Task 5: Creating a Golden Test Data Set
 
