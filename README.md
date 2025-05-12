@@ -61,5 +61,10 @@ In order to have a well-tuned **Agentic RAG Application**, it is important to ha
 
 Additionally, the[finetuning.ipynb notebook](https://github.com/dhrits/foodie-talk-nbs/blob/main/nbs/finetuning/finetuning.ipynb) also assesses the performance of the baseline and finetuned RAG chain on key metrics like faithfulness, response relevance, context precision, and context recall. **A table is included at the bottom of the notebook comparing the performance of the two pipelines**. **It is clear that the finetuned pipeline performs much better in comparison to the baseline on every metric.**
 
+## Task 6: Fine-Tuning Open Source Embeddings
+The code for finetuning [snowflake-arctic-embed-l](https://huggingface.co/Snowflake/snowflake-arctic-embed-l) is also included in the [finetuning.ipynb notebook](https://github.com/dhrits/foodie-talk-nbs/blob/main/nbs/finetuning/finetuning.ipynb) notebook. A *comparative performance between the finetuned embeddings and the original embeddings is included at the bottom of the notebook.*
 
+Additionally, the fintuned embeddings are available on huggingface hub [here](https://huggingface.co/deman539/food-review-ft-snowflake-l-f18eeff6-7504-48c7-af10-1d2d85ca8caa).
 
+## Task 7: Assessing Performance
+An analysis of the performance of the finetuned RAG chain is included in [finetuning.ipynb notebook](https://github.com/dhrits/foodie-talk-nbs/blob/main/nbs/finetuning/finetuning.ipynb) (this notebook also does a comparative analysis of the performance of the baseline and finetuned pipelines). Additionally, an assessment of the entire Agentic RAG pipeline is included in the [agentic_rag.ipynb notebook](https://github.com/dhrits/foodie-talk-nbs/blob/main/nbs/agents/agentic_rag.ipynb). 
