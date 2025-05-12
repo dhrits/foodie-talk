@@ -59,7 +59,7 @@ async def main(message):
                 "assistant": "🍽️"
             }
             
-            await msg.stream_token(f"{node_emoji.get(node, '')} Processing your request...\n")
+            await msg.stream_token(f"{node_emoji.get(node, '')} + {node.replace('_', ' ').capitalize()} Processing your request...\n")
             
             if values['messages'][-1].content:
                 if isinstance(values['messages'][-1], AIMessage):
