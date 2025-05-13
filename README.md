@@ -76,3 +76,9 @@ Additionally, the fintuned embeddings are available on huggingface hub [here](ht
 
 ## Task 7: Assessing Performance
 An analysis of the performance of the finetuned RAG chain is included in [finetuning.ipynb notebook](https://github.com/dhrits/foodie-talk-nbs/blob/main/nbs/finetuning/finetuning.ipynb) (this notebook also does a comparative analysis of the performance of the baseline and finetuned pipelines). Additionally, an assessment of the entire Agentic RAG pipeline is included in the [agentic_rag.ipynb notebook](https://github.com/dhrits/foodie-talk-nbs/blob/main/nbs/agents/agentic_rag.ipynb). 
+
+### Future Enhancements
+Going forward, there's a few features I'd like to be able to support:
+1. Multi-User support to allow the application to build a taste profile for each user and personalize the experience using chat memories.
+2. Support for MCP servers for Grubhub, Uber Eats and Seamless allowing the user the flexibility to order food from within the application.
+3. Better/more-realtime review support by relying on Yelp's official API.
